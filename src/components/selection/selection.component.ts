@@ -14,6 +14,7 @@ import {
   SelectionPropertyComponent,
   StarTitle,
   StarTitleComponent,
+  SubmitBtnComponent,
 } from '@shared';
 import { IProperty } from 'src/utils';
 import {
@@ -27,7 +28,11 @@ import {
 } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 
-const Components: Array<any> = [SelectionPropertyComponent, StarTitleComponent];
+const Components: Array<any> = [
+  SelectionPropertyComponent,
+  StarTitleComponent,
+  SubmitBtnComponent,
+];
 
 @Component({
   selector: 'selection',

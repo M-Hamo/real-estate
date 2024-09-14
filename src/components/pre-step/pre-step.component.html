@@ -149,17 +149,12 @@
     }
 
     <div class="flex-1 self-end flex items-end pb-6">
-      <button
+      <submit-btn
         [disabled]="preStepFormGroup.invalid"
-        [ngClass]="{
-          'bg-[#B0BBD5]': preStepFormGroup.invalid,
-          'shadow-lightBlue': preStepFormGroup.valid
-        }"
-        class="h-[34px] w-[192px] flex justify-center items-center shadow-2xl rounded border-none md:text-xl text-sm font-medium bg-lightBlue text-white"
+        text="pre_step.start_now"
+        class="h-[34px] w-[192px] md:mb-6 mb-3"
         (click)="onNext.emit()"
-      >
-        {{ "pre_step.start_now" | translate }}
-      </button>
+      />
     </div>
   </div>
 </section>

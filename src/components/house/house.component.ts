@@ -51,7 +51,7 @@ export class HouseComponent {
   readonly #fb = inject(FormBuilder);
   readonly #dialogRef = inject(MatDialogRef<HouseComponent>);
 
-  readonly #stepsIndexes: WritableSignal<number[]> = signal([2]);
+  readonly #stepsIndexes: WritableSignal<number[]> = signal([1]);
 
   public readonly activeStepIndex: Signal<number> = computed(
     () => this.#stepsIndexes().at(-1)!

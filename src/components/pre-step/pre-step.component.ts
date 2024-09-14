@@ -17,15 +17,18 @@ import {
 } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { Animations } from '@shared';
+import { Animations, SubmitBtnComponent } from '@shared';
 import { PreStepFormGroup } from 'src/utils';
 import { CreationType } from 'src/utils/enums';
+
+const Components: Array<any> = [SubmitBtnComponent];
 
 @Component({
   selector: 'pre-step',
   standalone: true,
   imports: [
     CommonModule,
+    Components,
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,

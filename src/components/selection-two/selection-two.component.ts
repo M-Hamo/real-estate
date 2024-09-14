@@ -24,10 +24,15 @@ import {
   SelectionPropertyComponent,
   StarTitle,
   StarTitleComponent,
+  SubmitBtnComponent,
 } from '@shared';
 import { IProperty } from 'src/utils';
 
-const Components: Array<any> = [SelectionPropertyComponent, StarTitleComponent];
+const Components: Array<any> = [
+  SelectionPropertyComponent,
+  StarTitleComponent,
+  SubmitBtnComponent,
+];
 
 @Component({
   selector: 'selection-two',
