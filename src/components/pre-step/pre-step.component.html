@@ -1,0 +1,160 @@
+<section
+  [@animateStagger]="{ value: '100' }"
+  class="w-full min-h-full grid sm:grid-cols-2 grid-cols-1 sm:gap-4 gap-2"
+>
+  <div
+    class="hello-container h-full flex flex-col justify-start items-start sm:gap-4 gap-2 sm:p-12 p-5"
+  >
+    <div class="flex justify-start items-center gap-2 mb-6">
+      <img src="assets/icons/fxemoji_megaphone.svg" alt="" class="h-7 w-7" />
+
+      <span class="text-secondary md:text-base text-sm font-medium">{{
+        "pre_step.preparing_advertising_campaigns" | translate
+      }}</span>
+    </div>
+
+    <strong class="text-3xl font-extrabold text-primary">
+      {{ "pre_step.hello_msg" | translate }}
+    </strong>
+
+    <p class="text-xl font-normal text-secondary">
+      {{ "pre_step.hello_desc" | translate }}
+    </p>
+
+    <ul
+      class="list-none flex flex-col justify-start items-start md:gap-5 gap-2 md:mt-6 mt-3"
+    >
+      @for (item of [0,0,0,0]; track $index) {
+      <li
+        [@animate]="{ value: '*', params: { y: '-20px', delay: '100ms' } }"
+        class="flex justify-start items-center md:gap-5 gap-2"
+      >
+        <div
+          class="flex justify-center items-center h-8 w-8 rounded-full bg-gradient-to-t from-[#56A4FF33] to-[#56A4FF33]"
+        >
+          <mat-icon class="text-lightBlue">done</mat-icon>
+        </div>
+
+        <span class="text-darkGrayish text-lg font-normal">{{
+          "pre_step.step" + ($index + 1) | translate
+        }}</span>
+      </li>
+      }
+    </ul>
+  </div>
+
+  <div
+    [formGroup]="preStepFormGroup"
+    class="h-full flex flex-col justify-start items-start gap-1 sm:pe-4 pe-2 sm:pt-12"
+  >
+    <strong class="text-2xl font-extrabold text-primary">
+      {{ "pre_step.how_build_battles" | translate }}
+    </strong>
+
+    <p class="text-lg font-normal text-secondary">
+      {{ "pre_step.chosen_method_creating_campaign" | translate }}
+    </p>
+
+    @let isManual = preStepFormGroup.get('createType')?.value ===
+    CreationType.MANUAL;
+
+    <label
+      [@animate]="{ value: '*', params: { x: '20px', delay: '50ms' } }"
+      [ngClass]="{ 'border-lightBlue': isManual }"
+      for="manual_creation"
+      class="w-full flex flex-col justify-start items-stretch gap-1 md:p-3 p-2 mt-2 md:pb-4 shadow hover:shadow-lg cursor-pointer ease-in-out duration-200 rounded-lg border-[1px] border-[#F0F0F0]"
+    >
+      <div class="flex justify-between items-start">
+        <img src="assets/icons/Group 1000017645.svg" alt="" class="h-11 w-11" />
+
+        <input
+          [value]="CreationType.MANUAL"
+          formControlName="createType"
+          id="manual_creation"
+          type="radio"
+          class="invisible"
+        />
+
+        <input
+          [checked]="isManual"
+          type="checkbox"
+          class="-mt-1 -me-1 w-5 h-5 text-lightBlue bg-[#F0F0F0] rounded-full focus:ring-0 ring-0 border-0"
+        />
+      </div>
+
+      <span class="text-darkGray md:text-lg text-base font-normal">
+        {{ "pre_step.manual_creation" | translate }}
+      </span>
+
+      <p class="text-darkGrayBlue md:text-base text-sm font-medium">
+        {{ "pre_step.manual_creation_desc" | translate }}
+      </p>
+    </label>
+
+    @let isAi = preStepFormGroup.get('createType')?.value === CreationType.AI;
+
+    <label
+      [@animate]="{ value: '*', params: { x: '20px', delay: '50ms' } }"
+      [ngClass]="{ 'border-lightBlue': isAi }"
+      for="ai_creation"
+      class="w-full flex flex-col justify-start items-stretch gap-1 md:p-3 p-2 mt-3 md:pb-4 shadow hover:shadow-lg cursor-pointer ease-in-out duration-200 rounded-lg border-[1px] border-[#F0F0F0]"
+    >
+      <div class="flex justify-between items-start">
+        <img src="assets/icons/Group 1000017646.svg" alt="" class="h-11 w-11" />
+
+        <input
+          [value]="CreationType.AI"
+          formControlName="createType"
+          id="ai_creation"
+          type="radio"
+          class="invisible"
+        />
+
+        <input
+          [checked]="isAi"
+          type="checkbox"
+          class="-mt-1 -me-1 w-5 h-5 text-lightBlue bg-[#F0F0F0] rounded-full focus:ring-0 ring-0 border-0"
+        />
+      </div>
+
+      <span class="text-darkGray md:text-lg text-base font-normal">
+        {{ "pre_step.ai_creation" | translate }}
+      </span>
+
+      <p class="text-darkGrayBlue md:text-base text-sm font-medium">
+        {{ "pre_step.manual_creation_desc" | translate }}
+      </p>
+    </label>
+
+    @if(isManual){
+    <hr class="w-full h-[1px] md:my-5 my-2 bg-[#DCDEE2]" />
+
+    <div class="w-full flex flex-col justify-start items-stretch gap-2">
+      <strong class="text-2xl font-extrabold text-primary">
+        {{ "pre_step.name_project_choice" | translate }}
+      </strong>
+
+      <p class="text-lg font-normal text-secondary">
+        {{ "pre_step.name_should_project_distinct_clear" | translate }}
+      </p>
+
+      <input
+        [placeholder]="'pre_step.name_proposed_project' | translate"
+        formControlName="projectName"
+        class="bg-transparent shadow border-[#F0F0F0] text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-lightBlue placeholder:text-[#B7B7B7] placeholder:text-base py-2.5 px-3"
+        type="text"
+      />
+    </div>
+    }
+
+    <div class="flex-1 self-end flex items-end pb-6">
+      <button
+        [ngClass]="{ 'bg-[#B0BBD5]': preStepFormGroup.invalid }"
+        class="h-[34px] w-[192px] flex justify-center items-center rounded border-none md:text-xl text-sm font-medium bg-lightBlue text-white"
+        (click)="onNext.emit()"
+      >
+        {{ "pre_step.start_now" | translate }}
+      </button>
+    </div>
+  </div>
+</section>
