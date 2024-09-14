@@ -1,0 +1,46 @@
+<app-dialog
+  [@animateStagger]="{ value: '100' }"
+  [formGroup]="houseFormGroup"
+  [progress]="activeStepIndex()"
+  class="flex items-stretch"
+  (onClose)="cancelHandler()"
+>
+  @let animationDir = (activeStepIndex() === beforeActiveStep()) ?
+  "20px":(activeStepIndex() > beforeActiveStep()) ?"20px":"-20px";
+
+  <a
+    backBtn
+    class="flex justify-center items-center cursor-pointer"
+    (click)="onNavigate(activeStepIndex() - 1)"
+  >
+    @if(activeStepIndex()>0){
+    <mat-icon class="md:text-lg text-base font-normal">east</mat-icon>
+    <span class="border-0 md:text-base text-sm font-normal text-secondary">{{
+      "utils.back" | translate
+    }}</span>
+    }
+  </a>
+
+  @switch (activeStepIndex()) { @case (0) {
+  <pre-step
+    [@animate]="{ value: '*', params: { x: animationDir, delay: '100ms' } }"
+    formControlName="preStepFromGroup"
+    class="h-full w-full flex justify-center items-center"
+    (onNext)="onNavigate(1)"
+  />
+  } @case (1) {
+  <selection
+    [@animate]="{ value: '*', params: { x: animationDir, delay: '100ms' } }"
+    formControlName="propertyPlace"
+    class="h-full w-full flex justify-center items-center"
+    (onNext)="onNavigate(2)"
+  />
+  } @case (2) {
+  <selection-two
+    [@animate]="{ value: '*', params: { x: animationDir, delay: '100ms' } }"
+    formControlName="propertyType"
+    class="h-full w-full flex justify-center items-center"
+    (onNext)="onNavigate(3)"
+  />
+  } }
+</app-dialog>
