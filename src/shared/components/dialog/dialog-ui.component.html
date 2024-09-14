@@ -1,0 +1,27 @@
+<mat-dialog-content [dir]="dir()" class="w-full min-h-full">
+  <div
+    class="w-full absolute left-0 flex justify-between items-center md:p-5 md:px-7 sm:p-3 p-2"
+  >
+    <ng-content select="[backBtn]"
+      ><button class="invisible"></button
+    ></ng-content>
+
+    <button
+      class="h-7 w-7 relative flex justify-center items-center outline-none bg-[#F4F4F4] hover:bg-slate-300 rounded-md"
+      (click)="onClose.emit()"
+    >
+      <mat-icon class="text-secondary text-lg">close</mat-icon>
+    </button>
+  </div>
+
+  <ng-content />
+
+  @if (progressValue()>0) {
+  <div class="relative h-2 -mt-2 bg-[#DEDFE6]">
+    <div
+      [ngStyle]="{ width: progressValue() + '%' }"
+      class="h-full bg-lightBlue rounded-e-lg"
+    ></div>
+  </div>
+  }
+</mat-dialog-content>
