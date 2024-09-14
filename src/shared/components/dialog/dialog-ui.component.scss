@@ -1,0 +1,13 @@
+.close-btn {
+  @apply h-7 w-7 relative flex justify-center items-center outline-none bg-[#F4F4F4] hover:text-red-500 rounded-md;
+
+  mat-icon {
+    @apply text-secondary text-lg;
+  }
+
+  &:hover {
+    mat-icon {
+      @apply text-red-500;
+    }
+  }
+}

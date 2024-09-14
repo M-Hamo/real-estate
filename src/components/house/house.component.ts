@@ -9,7 +9,6 @@ import {
   WritableSignal,
 } from '@angular/core';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { DialogComponent } from '@shared/components';
 import { PreStepComponent } from '../pre-step/pre-step.component';
 import {
   FormBuilder,
@@ -19,7 +18,7 @@ import {
 } from '@angular/forms';
 import { HouseFormGroup } from 'src/utils';
 import { tap } from 'rxjs/operators';
-import { Animations } from '@shared';
+import { Animations, DialogComponent } from '@shared';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { SelectionComponent } from '../selection/selection.component';
@@ -52,7 +51,7 @@ export class HouseComponent {
   readonly #fb = inject(FormBuilder);
   readonly #dialogRef = inject(MatDialogRef<HouseComponent>);
 
-  readonly #stepsIndexes: WritableSignal<number[]> = signal([1]);
+  readonly #stepsIndexes: WritableSignal<number[]> = signal([2]);
 
   public readonly activeStepIndex: Signal<number> = computed(
     () => this.#stepsIndexes().at(-1)!

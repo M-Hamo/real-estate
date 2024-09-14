@@ -1,0 +1,38 @@
+<section
+  [@animateStagger]="{ value: '100' }"
+  class="w-full min-h-full flex flex-col justify-center items-center sm:gap-10 gap-5"
+>
+  <star-title [starTitle]="starTitle()" />
+
+  <section class="flex flex-wrap justify-center items-center md:gap-5 gap-2">
+    @for (property of propertiesList(); track $index) {
+    <selection-property
+      [@animate]="{ value: '*', params: { y: '-20px', delay: '50ms' } }"
+      [property]="property"
+      [isSelected]="property.name === propertyTypeControl.value"
+      [formControl]="propertyTypeControl"
+    />
+    }
+  </section>
+
+  <div class="flex flex-col justify-center items-center md:mt-16 mt-8">
+    <button
+      [ngClass]="{
+        'bg-[#B0BBD5]': propertyTypeControl.invalid,
+        'shadow-lightBlue': propertyTypeControl.valid
+      }"
+      class="h-[34.83px] w-[164.35px] flex justify-center items-center shadow-2xl md:mb-6 mb-3 md:gap-3 gap-2 rounded border-none md:text-xl text-sm font-medium bg-lightBlue text-white"
+      (click)="onNext.emit()"
+    >
+      <span>{{ "utils.next" | translate }}</span>
+    </button>
+
+    <p class="text-base font-normal text-[#A5A7AB]">
+      {{ "selection_step.help_msg" | translate }}
+    </p>
+
+    <p class="text-base font-normal text-[#A5A7AB]">
+      {{ "selection_step.click_start_msg" | translate }}
+    </p>
+  </div>
+</section>

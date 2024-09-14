@@ -6,11 +6,8 @@
       ><button class="invisible"></button
     ></ng-content>
 
-    <button
-      class="h-7 w-7 relative flex justify-center items-center outline-none bg-[#F4F4F4] hover:bg-slate-300 rounded-md"
-      (click)="onClose.emit()"
-    >
-      <mat-icon class="text-secondary text-lg">close</mat-icon>
+    <button class="close-btn" (click)="onClose.emit()">
+      <mat-icon>close</mat-icon>
     </button>
   </div>
 

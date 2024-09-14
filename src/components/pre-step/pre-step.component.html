@@ -98,6 +98,7 @@
       [ngClass]="{ 'border-lightBlue': isAi }"
       for="ai_creation"
       class="w-full flex flex-col justify-start items-stretch gap-1 md:p-3 p-2 mt-3 md:pb-4 shadow hover:shadow-lg cursor-pointer ease-in-out duration-200 rounded-lg border-[1px] border-[#F0F0F0]"
+      (click)="preStepFormGroup.get('projectName')?.reset()"
     >
       <div class="flex justify-between items-start">
         <img src="assets/icons/Group 1000017646.svg" alt="" class="h-11 w-11" />
@@ -149,8 +150,12 @@
 
     <div class="flex-1 self-end flex items-end pb-6">
       <button
-        [ngClass]="{ 'bg-[#B0BBD5]': preStepFormGroup.invalid }"
-        class="h-[34px] w-[192px] flex justify-center items-center rounded border-none md:text-xl text-sm font-medium bg-lightBlue text-white"
+        [disabled]="preStepFormGroup.invalid"
+        [ngClass]="{
+          'bg-[#B0BBD5]': preStepFormGroup.invalid,
+          'shadow-lightBlue': preStepFormGroup.valid
+        }"
+        class="h-[34px] w-[192px] flex justify-center items-center shadow-2xl rounded border-none md:text-xl text-sm font-medium bg-lightBlue text-white"
         (click)="onNext.emit()"
       >
         {{ "pre_step.start_now" | translate }}
