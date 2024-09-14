@@ -1,0 +1,45 @@
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import "material-icons/iconfont/material-icons.css";
+
+mat-checkbox,
+mat-form-field,
+mat-toolbar,
+mat-select,
+mat-select-trigger,
+mat-option,
+mat-slide-toggle,
+mat-paginator,
+.mat-slide-toggle-content,
+.mat-simple-snack-bar-content,
+.mat-tooltip {
+  font-family: "serif" !important;
+}
+
+mat-error {
+  line-height: 12px;
+  font-size: 12px;
+}
+
+.mat-tooltip {
+  font-size: 12px !important;
+  line-height: 12px !important;
+}
+
+.mat-mdc-dialog-container {
+  padding: 0 !important;
+}
+
+.mat-mdc-dialog-container {
+  .mdc-dialog__surface {
+    border-radius: 10.5px !important;
+  }
+
+  .mdc-dialog__content {
+    font-family: "serif" !important;
+    padding: 0 !important;
+  }
+}
+
+.mat-typography p {
+  margin: 0;
+}

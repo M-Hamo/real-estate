@@ -1,0 +1,21 @@
+@import "variables";
+
+@font-face {
+  font-family: "serif";
+  src: url("../assets/fonts/neo-sans-arabic/NeoSansArabic.ttf");
+}
+
+:root {
+  --nav-bg: #f8f8f8;
+  --nav-border: #d3d3d3;
+}
+
+.df-primary {
+  --bg-color: #4378db;
+  --text-color: #faf0e6;
+}
+
+.df-secondary {
+  --bg-color: rgb(249, 186, 11);
+  --text-color: #333;
+}
