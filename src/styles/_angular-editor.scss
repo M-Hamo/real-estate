@@ -1,6 +1,11 @@
 angular-editor {
   button {
-    @apply bg-transparent border-none before:bg-transparent #{!important};
+    background-color: transparent !important;
+    border: none !important;
+
+    &::before {
+      background-color: transparent !important;
+    }
   }
 
   ol,
@@ -24,16 +29,32 @@ angular-editor {
 }
 
 .angular-editor-toolbar {
-  @apply flex flex-wrap justify-start items-center rounded-t-[8px] border-b-0 bg-[#f2f4f7] #{!important};
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: start !important;
+  align-items: center !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+  border-bottom: 0 !important;
+  background-color: #f2f4f7 !important;
 }
 
 .angular-editor-textarea {
-  @apply shadow rounded-b-[8px] border-[1px] border-t-0 border-[#d3d6dc] text-[#111827] focus:outline-none active:outline-none mt-0 #{!important};
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+  border-width: 1px !important;
+  border-top: 0 !important;
+  border-color: #d3d6dc !important;
+  color: #111827 !important;
+  outline: none !important;
+  margin-top: 0 !important;
+
+  @apply shadow;
 }
 
 .ae-font .ae-picker-label:before {
   background: none !important;
-  @apply bg-transparent #{!important};
+  background-color: transparent !important;
 }
 
 .html-editor {
