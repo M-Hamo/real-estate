@@ -45,13 +45,15 @@
   "submit_step": {
     "sending_msg": "جاري إرسال رسالتك الأسكانية",
     "wait_some_minutes": "الرجاء الأنتظار بعض الدقائق فقط",
-    "sending": "جاري الأرسال"
+    "sending": "جاري الأرسال",
+    "sending_complete_success": "تم إرسال رسالتك بنجاح"
   },
   "utils": {
     "back": "العودة",
     "next": "التالي",
     "next_step": "الخطوة التالية",
     "description": "الوصف",
-    "subject": "الموضوع"
+    "subject": "الموضوع",
+    "exit": "خروج"
   }
 }

@@ -1,13 +1,11 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
-  forwardRef,
   output,
   OutputEmitterRef,
   signal,
   WritableSignal,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { Animations } from '@shared';
 import { timer } from 'rxjs';
@@ -20,13 +18,6 @@ import { map, takeUntil, tap } from 'rxjs/operators';
   templateUrl: './submit.component.html',
   styleUrl: './submit.component.scss',
   animations: [Animations],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SubmitComponent),
-      multi: true,
-    },
-  ],
 })
 export class SubmitComponent {
   public onNext: OutputEmitterRef<void> = output();

@@ -1,0 +1,43 @@
+<section
+  [@animateStagger]="{ value: '100' }"
+  class="gradient-bg relative w-full min-h-full flex flex-col justify-center items-center sm:p-0 p-8 sm:gap-20 gap-10"
+>
+  <section
+    [@animate]="{ value: '*', params: { y: '20px', delay: '50ms' } }"
+    class="flex flex-col justify-center items-center gap-2"
+  >
+    <strong class="sm:text-2xl text-xl font-extrabold text-darkGray">
+      {{ "submit_step.sending_complete_success" | translate }}
+    </strong>
+
+    <p class="text-base font-medium text-secondary">
+      {{ "submit_step.wait_some_minutes" | translate }}
+    </p>
+  </section>
+
+  <section class="relative flex md:h-48 md:w-48 md:my-10 my-5">
+    <span
+      class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#3e98ff57] opacity-75"
+    ></span>
+    <span
+      class="relative inline-flex justify-center items-center rounded-full md:h-48 md:w-48 bg-lightBlue"
+      ><mat-icon
+        style="height: 120px; width: 120px; font-size: 120px"
+        class="text-white"
+        >done</mat-icon
+      ></span
+    >
+  </section>
+
+  <section
+    [@animate]="{ value: '*', params: { y: '20px', delay: '50ms' } }"
+    class="w-3/4 flex flex-col justify-center items-stretch gap-1 text-base font-medium text-darkGray"
+  >
+    <button
+      class="outline-none bottom-0 text-lg font-medium text-lightBlue"
+      (click)="onNext.emit()"
+    >
+      {{ "utils.exit" | translate }}
+    </button>
+  </section>
+</section>

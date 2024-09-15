@@ -13,7 +13,7 @@
     class="flex justify-center items-center cursor-pointer"
     (click)="onNavigate(activeStepIndex() - 1)"
   >
-    @if(activeStepIndex()>0){
+    @if(activeStepIndex()>0 && activeStepIndex()<6){
     <mat-icon class="md:text-lg text-base font-normal">east</mat-icon>
     <span class="border-0 md:text-base text-sm font-normal text-secondary">{{
       "utils.back" | translate
@@ -62,6 +62,12 @@
     [@animate]="{ value: '*', params: { x: animationDir, delay: '100ms' } }"
     class="h-full w-full flex"
     (onNext)="onNavigate(6)"
+  />
+  } @case (6) {
+  <verification
+    [@animate]="{ value: '*', params: { x: animationDir, delay: '100ms' } }"
+    class="h-full w-full flex"
+    (onNext)="cancelHandler()"
   />
   } }
 </app-dialog>

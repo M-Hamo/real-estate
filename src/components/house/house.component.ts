@@ -26,6 +26,7 @@ import { SelectionTwoComponent } from '../selection-two/selection-two.component'
 import { PropPreviewComponent } from '../prop-preview/prop-preview.component';
 import { PropComponent } from '../prop/prop.component';
 import { SubmitComponent } from '../submit/submit.component';
+import { VerificationComponent } from '../verification/verification.component';
 
 const Components: Array<any> = [
   SelectionComponent,
@@ -34,6 +35,7 @@ const Components: Array<any> = [
   PropComponent,
   PropPreviewComponent,
   SubmitComponent,
+  VerificationComponent,
 ];
 
 @Component({
@@ -57,7 +59,7 @@ export class HouseComponent {
   readonly #fb = inject(FormBuilder);
   readonly #dialogRef = inject(MatDialogRef<HouseComponent>);
 
-  readonly #stepsIndexes: WritableSignal<number[]> = signal([5]);
+  readonly #stepsIndexes: WritableSignal<number[]> = signal([6]);
 
   public readonly activeStepIndex: Signal<number> = computed(
     () => this.#stepsIndexes().at(-1)!
