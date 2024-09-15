@@ -2,7 +2,10 @@
   [@animateStagger]="{ value: '100' }"
   class="gradient-bg w-full min-h-full flex flex-col justify-start items-stretch md:gap-3 gap-2 py-14 md:px-8 sm:px-6 px-4"
 >
-  <section class="flex justify-between items-center sm:pe-12">
+  <section
+    [@animate]="{ value: '*', params: { y: '-20px', delay: '50ms' } }"
+    class="flex justify-between items-center sm:pe-12"
+  >
     <div class="flex flex-col justify-center items-start gap-1">
       <strong class="sm:text-2xl text-xl font-extrabold text-darkGray">
         {{ "pre_step.how_build_battles" | translate }}
@@ -14,6 +17,7 @@
     </div>
 
     <img
+      [@animate]="{ value: '*', params: { x: '-20px', delay: '50ms' } }"
       src="assets/icons/Group 1000017697.svg"
       alt=""
       class="md:visible invisible -mb-20 sm:h-36 h-0 sm:w-36 w-0"
@@ -21,6 +25,7 @@
   </section>
 
   <section
+    [@animate]="{ value: '*', params: { y: '-20px', delay: '50ms' } }"
     class="rounded-xl shadow bg-slate-50 border border-[#D3D6DC66] p-3 text-lg font-medium md:mt-4 mt-2"
   >
     <div class="flex justify-start items-center gap-1 text-[#8A8EA1]">
@@ -85,6 +90,7 @@
   </section>
 
   <section
+    [@animate]="{ value: '*', params: { y: '-20px', delay: '50ms' } }"
     class="rounded-xl shadow border border-[#D3D6DC66] text-lg font-medium"
   >
     <div class="rounded-t-xl p-3 bg-slate-50">
@@ -116,6 +122,7 @@
   </section>
 
   <section
+    [@animate]="{ value: '*', params: { y: '20px', delay: '50ms' } }"
     class="self-stretch flex flex-col justify-center items-center gap-2 md:mt-4 mt-2"
   >
     <submit-btn

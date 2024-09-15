@@ -57,5 +57,11 @@
     class="h-full w-full flex"
     (onNext)="onNavigate(5)"
   />
+  } @case (5) {
+  <app-submit
+    [@animate]="{ value: '*', params: { x: animationDir, delay: '100ms' } }"
+    class="h-full w-full flex"
+    (onNext)="onNavigate(6)"
+  />
   } }
 </app-dialog>

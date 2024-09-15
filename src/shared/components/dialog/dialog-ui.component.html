@@ -14,9 +14,9 @@
   <ng-content />
 
   @if (progressValue()>0 &&(progressValue() <=100)) {
-  <div class="relative h-2 -mt-2 bg-[#DEDFE6]">
+  <div class="relative h-2 -mt-2 bg-[#3e98ff57]">
     <div
-      [ngStyle]="{ width: progressValue() + '%' }"
+      [style.width.%]="progressValue()"
       class="h-full bg-lightBlue rounded-e-lg"
     ></div>
   </div>

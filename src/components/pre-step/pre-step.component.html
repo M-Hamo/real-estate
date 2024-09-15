@@ -131,7 +131,10 @@
     @if(isManual){
     <hr class="w-full h-[1px] md:my-5 my-2 bg-[#DCDEE2]" />
 
-    <div class="w-full flex flex-col justify-start items-stretch gap-2">
+    <div
+      @fadeInOut
+      class="w-full flex flex-col justify-start items-stretch gap-2"
+    >
       <strong class="lg:text-2xl text-base font-extrabold text-primary">
         {{ "pre_step.name_project_choice" | translate }}
       </strong>
@@ -155,6 +158,7 @@
 
     <div class="flex-1 self-end flex items-end pb-6">
       <submit-btn
+        [@animate]="{ value: '*', params: { y: '10px', delay: '50ms' } }"
         [disabled]="preStepFormGroup.invalid"
         text="pre_step.start_now"
         class="h-[34px] w-[192px] md:mb-6 mb-3"

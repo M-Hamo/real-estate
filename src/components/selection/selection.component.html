@@ -2,7 +2,11 @@
   [@animateStagger]="{ value: '100' }"
   class="gradient-bg relative w-full min-h-full flex flex-col sm:justify-center justify-start items-center sm:p-0 p-8 sm:gap-10 gap-5"
 >
-  <star-title class="relative" [starTitle]="starTitle()" />
+  <star-title
+    [@animate]="{ value: '*', params: { y: '-20px', delay: '50ms' } }"
+    class="relative"
+    [starTitle]="starTitle()"
+  />
 
   <section class="flex flex-wrap justify-center items-center md:gap-5 gap-2">
     @for (property of propertiesList(); track $index) {
@@ -15,7 +19,10 @@
     }
   </section>
 
-  <div class="flex flex-col justify-center items-center md:mt-16 mt-8">
+  <section
+    [@animate]="{ value: '*', params: { y: '20px', delay: '50ms' } }"
+    class="flex flex-col justify-center items-center md:mt-16 mt-8"
+  >
     <submit-btn
       [disabled]="propertyPlaceControl.invalid"
       text="pre_step.start_now"
@@ -31,5 +38,5 @@
     <p class="text-base font-normal text-center text-[#A5A7AB]">
       {{ "selection_step.click_start_msg" | translate }}
     </p>
-  </div>
+  </section>
 </section>

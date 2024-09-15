@@ -1,0 +1,52 @@
+<section
+  [@animateStagger]="{ value: '100' }"
+  class="gradient-bg relative w-full min-h-full flex flex-col justify-center items-center sm:p-0 p-8 sm:gap-14 gap-10"
+>
+  <section
+    [@animate]="{ value: '*', params: { y: '20px', delay: '50ms' } }"
+    class="flex flex-col justify-center items-center gap-1"
+  >
+    <strong class="sm:text-2xl text-xl font-extrabold text-darkGray">
+      {{ "submit_step.sending_msg" | translate }}
+    </strong>
+
+    <p class="text-base font-medium text-secondary">
+      {{ "submit_step.wait_some_minutes" | translate }}
+    </p>
+  </section>
+
+  <section
+    [@animate]="{ value: '*', params: { x: '-20px', delay: '50ms' } }"
+    class="relative flex justify-center items-center md:h-64 sm:h-52 md:w-64 sm:w-52 h-44 w-44 rounded-full bg-[#3e98ff57] overflow-hidden"
+  >
+    <section
+      class="absolute bottom-0 flex justify-center items-center md:h-64 sm:h-52 md:w-64 sm:w-52 h-44 w-44 bg-lightBlue animate-ping z-10"
+    ></section>
+    <section
+      class="relative flex justify-center items-center md:h-60 sm:h-48 md:w-60 sm:w-48 h-40 w-40 rounded-full bg-white z-20"
+    >
+      <img
+        src="assets/images/images.png"
+        alt=""
+        class="sm:h-20 h-16 sm:w-20 w-16"
+      />
+    </section>
+  </section>
+
+  <section
+    [@animate]="{ value: '*', params: { y: '20px', delay: '50ms' } }"
+    class="w-3/4 flex flex-col justify-center items-stretch gap-1 text-base font-medium text-darkGray"
+  >
+    <div class="flex justify-between items-center px-1">
+      <span>{{ "submit_step.sending" | translate }}</span>
+      <span>100\{{ progress() | number }}</span>
+    </div>
+
+    <div class="relative progress-bar-container h-3 bg-[#3e98ff57] rounded-lg">
+      <div
+        [style.width.%]="progress()"
+        class="bar h-full bg-lightBlue rounded-lg animate-pulse"
+      ></div>
+    </div>
+  </section>
+</section>

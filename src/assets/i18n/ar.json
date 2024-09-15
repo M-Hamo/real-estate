@@ -42,6 +42,11 @@
     "modern_design_ai": "تصميم حديث وذكي",
     "view_house_desc": "معاينة وصف المنزل"
   },
+  "submit_step": {
+    "sending_msg": "جاري إرسال رسالتك الأسكانية",
+    "wait_some_minutes": "الرجاء الأنتظار بعض الدقائق فقط",
+    "sending": "جاري الأرسال"
+  },
   "utils": {
     "back": "العودة",
     "next": "التالي",
