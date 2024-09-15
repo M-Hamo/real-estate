@@ -6,7 +6,7 @@ A web application to collect information about real estate and homes.
 
 Project is created with:
 
-- Angular 8.1 (latest)
+- Angular 18.1 (latest)
   - Using Signals
   - Required inputs
   - Flexible ngOnDestroy
