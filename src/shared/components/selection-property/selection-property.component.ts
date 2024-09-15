@@ -32,7 +32,7 @@ import { IProperty } from 'src/utils';
       <input
         [checked]="isSelected()"
         type="checkbox"
-        class="absolute -mt-2 -ms-2 w-5 h-5 text-lightBlue bg-[#F0F0F0] rounded-full focus:ring-0 ring-0 border-0"
+        class="absolute sm:-mt-2 sm:-ms-2 w-5 h-5 text-lightBlue bg-[#F0F0F0] rounded-full focus:ring-0 ring-0 border-0"
       />
 
       <input

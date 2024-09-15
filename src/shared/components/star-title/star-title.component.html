@@ -2,20 +2,18 @@
 <section
   class="relatvie flex flex-col justify-center items-center gap-1 md:p-6 p-3"
 >
-  <div class="flex flex-col justify-center items-center gap-1"></div>
-
   <img
     [src]="starTitle().icon || 'assets/icons/star-vector.svg'"
     alt=""
-    class="self-start ms-16 h-5 w-5"
+    class="self-start text-center ms-16 h-5 w-5"
   />
 
-  <span class="text-2xl font-extrabold text-darkGray">
+  <span class="sm:text-2xl text-xl font-extrabold text-darkGray">
     {{ starTitle().title | translate }}
   </span>
 
   <div class="flex flex-col justify-center items-center">
-    <p class="text-lg font-normal text-[#A5A7AB]">
+    <p class="sm:text-lg text-base font-normal text-center text-[#A5A7AB]">
       {{ starTitle().description | translate }}
     </p>
 
@@ -26,5 +24,4 @@
     />
   </div>
 </section>
-
 }

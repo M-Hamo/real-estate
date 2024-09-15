@@ -1,10 +1,10 @@
 <button
   [disabled]="disabled()"
-  [ngClass]="{ 'bg-[#B0BBD5]': disabled() }"
+  [ngClass]="{ 'bg-disabled': disabled(), 'bg-lightBlue': !disabled() }"
   [ngStyle]="{
     'box-shadow': !disabled() ? '0px -2px 21.1px 0px #4FA0FF66' : 'none'
   }"
-  class="h-full w-full flex justify-center items-center shadow-xl md:gap-3 gap-2 rounded border-none md:text-xl text-sm font-medium bg-lightBlue text-white"
+  class="h-full w-full flex justify-center items-center shadow-xl md:gap-3 gap-2 rounded border-none md:text-xl text-sm font-medium text-white"
 >
   <ng-content>
     @if (icon()) {
@@ -15,7 +15,7 @@
         icon()
       }}</mat-icon>
     </div>
-    } @if (text()) {<span>{{ text() | translate }}</span
-    >}
+    } @if (text()) {<span>{{ text() | translate }}</span>
+    }
   </ng-content>
 </button>

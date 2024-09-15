@@ -3,7 +3,7 @@
   class="w-full min-h-full grid sm:grid-cols-2 grid-cols-1 sm:gap-4 gap-2"
 >
   <div
-    class="hello-container h-full flex flex-col justify-start items-start sm:gap-4 gap-2 sm:p-12 p-5"
+    class="hello-container h-full flex flex-col justify-start items-start sm:gap-4 gap-2 md:p-12 sm:p-8 p-4"
   >
     <div class="flex justify-start items-center gap-2 mb-6">
       <img src="assets/icons/fxemoji_megaphone.svg" alt="" class="h-7 w-7" />
@@ -13,11 +13,11 @@
       }}</span>
     </div>
 
-    <strong class="text-3xl font-extrabold text-primary">
+    <strong class="lg:text-3xl text-xl font-extrabold text-primary">
       {{ "pre_step.hello_msg" | translate }}
     </strong>
 
-    <p class="text-xl font-normal text-secondary">
+    <p class="lg:text-xl text-base font-normal text-secondary">
       {{ "pre_step.hello_desc" | translate }}
     </p>
 
@@ -30,14 +30,15 @@
         class="flex justify-start items-center md:gap-5 gap-2"
       >
         <div
-          class="flex justify-center items-center h-8 w-8 rounded-full bg-gradient-to-t from-[#56A4FF33] to-[#56A4FF33]"
+          class="flex justify-center items-center min-h-8 h-8 max-h-8 min-w-8 w-8 max-w-8 rounded-full bg-gradient-to-t from-[#56A4FF33] to-[#56A4FF33]"
         >
           <mat-icon class="text-lightBlue">done</mat-icon>
         </div>
 
-        <span class="text-darkGrayish text-lg font-normal">{{
-          "pre_step.step" + ($index + 1) | translate
-        }}</span>
+        <span
+          class="text-darkGrayish lg:text-lg sm:text-base text-sm font-normal"
+          >{{ "pre_step.step" + ($index + 1) | translate }}</span
+        >
       </li>
       }
     </ul>
@@ -45,13 +46,13 @@
 
   <div
     [formGroup]="preStepFormGroup"
-    class="h-full flex flex-col justify-start items-start gap-1 sm:pe-4 pe-2 sm:pt-12"
+    class="h-full flex flex-col justify-start items-start gap-1 sm:pe-4 px-4 sm:pt-12"
   >
-    <strong class="text-2xl font-extrabold text-primary">
+    <strong class="lg:text-2xl text-base font-extrabold text-primary">
       {{ "pre_step.how_build_battles" | translate }}
     </strong>
 
-    <p class="text-lg font-normal text-secondary">
+    <p class="lg:text-lg text-sm font-normal text-secondary">
       {{ "pre_step.chosen_method_creating_campaign" | translate }}
     </p>
 
@@ -131,18 +132,22 @@
     <hr class="w-full h-[1px] md:my-5 my-2 bg-[#DCDEE2]" />
 
     <div class="w-full flex flex-col justify-start items-stretch gap-2">
-      <strong class="text-2xl font-extrabold text-primary">
+      <strong class="lg:text-2xl text-base font-extrabold text-primary">
         {{ "pre_step.name_project_choice" | translate }}
       </strong>
 
-      <p class="text-lg font-normal text-secondary">
+      <label
+        for="project-name"
+        class="lg:text-lg text-sm font-normal text-secondary"
+      >
         {{ "pre_step.name_should_project_distinct_clear" | translate }}
-      </p>
+      </label>
 
       <input
         [placeholder]="'pre_step.name_proposed_project' | translate"
         formControlName="projectName"
-        class="bg-transparent shadow border-[#F0F0F0] text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-lightBlue placeholder:text-[#B7B7B7] placeholder:text-base py-2.5 px-3"
+        id="project-name"
+        class="bg-transparent shadow border-[#D3D6DC] text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-lightBlue placeholder:text-[#B7B7B7] placeholder:text-base py-2.5 px-3"
         type="text"
       />
     </div>

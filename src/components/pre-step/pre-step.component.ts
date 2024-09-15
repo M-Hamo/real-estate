@@ -18,8 +18,7 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { Animations, SubmitBtnComponent } from '@shared';
-import { PreStepFormGroup } from 'src/utils';
-import { CreationType } from 'src/utils/enums';
+import { CreationType, PreStepFormGroup } from 'src/utils';
 
 const Components: Array<any> = [SubmitBtnComponent];
 

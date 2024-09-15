@@ -26,7 +26,7 @@ export class DialogComponent {
 
   public readonly progressValue: InputSignal<number> = input.required({
     alias: 'progress',
-    transform: (val: number) => (val / 5) * 100,
+    transform: (val: number) => (val / 4) * 100,
   });
 
   public onClose: OutputEmitterRef<void> = output();

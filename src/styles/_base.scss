@@ -19,3 +19,9 @@
   --bg-color: rgb(249, 186, 11);
   --text-color: #333;
 }
+
+.gradient-bg {
+  background-image: url("../assets/images/Rectangle2.svg");
+  background-size: cover;
+  overflow: auto;
+}

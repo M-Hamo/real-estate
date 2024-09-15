@@ -1,6 +1,6 @@
-<mat-dialog-content [dir]="dir()" class="w-full min-h-full">
+<section [dir]="dir()" class="w-full h-full overflow-auto">
   <div
-    class="w-full absolute left-0 flex justify-between items-center md:p-5 md:px-7 sm:p-3 p-2"
+    class="w-full absolute left-0 flex justify-between items-center z-10 md:p-5 md:px-7 sm:p-3 p-2"
   >
     <ng-content select="[backBtn]"
       ><button class="invisible"></button
@@ -13,7 +13,7 @@
 
   <ng-content />
 
-  @if (progressValue()>0) {
+  @if (progressValue()>0 &&(progressValue() <=100)) {
   <div class="relative h-2 -mt-2 bg-[#DEDFE6]">
     <div
       [ngStyle]="{ width: progressValue() + '%' }"
@@ -21,4 +21,4 @@
     ></div>
   </div>
   }
-</mat-dialog-content>
+</section>
