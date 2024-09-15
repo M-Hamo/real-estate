@@ -1,0 +1,51 @@
+angular-editor {
+  button {
+    @apply bg-transparent border-none before:bg-transparent #{!important};
+  }
+
+  ol,
+  ul,
+  menu {
+    margin: 10px !important;
+    list-style-type: initial !important;
+  }
+
+  ol {
+    list-style: auto !important;
+  }
+
+  ul {
+    list-style: unset !important;
+  }
+
+  li {
+    padding: 5px 0;
+  }
+}
+
+.angular-editor-toolbar {
+  @apply flex flex-wrap justify-start items-center rounded-t-[8px] border-b-0 bg-[#f2f4f7] #{!important};
+}
+
+.angular-editor-textarea {
+  @apply shadow rounded-b-[8px] border-[1px] border-t-0 border-[#d3d6dc] text-[#111827] focus:outline-none active:outline-none mt-0 #{!important};
+}
+
+.ae-font .ae-picker-label:before {
+  background: none !important;
+  @apply bg-transparent #{!important};
+}
+
+.html-editor {
+  ol {
+    list-style: auto !important;
+  }
+
+  ul {
+    list-style: unset !important;
+  }
+
+  li {
+    padding: 5px 0;
+  }
+}
