@@ -1,27 +1,19 @@
-import {
-  Component,
-  DestroyRef,
-  OnInit,
-  signal,
-  WritableSignal,
-} from '@angular/core';
+import { Component, DestroyRef, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { LanguageService } from 'src/services/language.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { ModalService } from './services';
 import { HouseComponent } from './components';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { tap } from 'rxjs/operators';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TranslateModule, JsonPipe],
+  imports: [TranslateModule],
   template: `<div
     class="w-full h-screen flex justify-center items-center text-2xl"
   >
-    {{ houseDetails() | json }}
+    {{ 'hello_world' | translate }}
   </div>`,
 })
 export class AppComponent implements OnInit {
@@ -35,8 +27,6 @@ export class AppComponent implements OnInit {
     this._iconRegistry.setDefaultFontSetClass('material-icons-round');
   }
 
-  public readonly houseDetails: WritableSignal<unknown> = signal(null);
-
   public ngOnInit(): void {
     this._openHouseModal();
   }
@@ -44,10 +34,7 @@ export class AppComponent implements OnInit {
   private _openHouseModal = (): void => {
     this._modalService
       .openModal(HouseComponent)
-      .pipe(
-        tap((res) => this.houseDetails.set(res)),
-        takeUntilDestroyed(this._destroyRef)
-      )
+      .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe();
   };
 }

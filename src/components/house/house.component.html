@@ -8,13 +8,18 @@
   @let animationDir = (activeStepIndex() === beforeActiveStep()) ?
   "20px":(activeStepIndex() > beforeActiveStep()) ?"20px":"-20px";
 
+  <ng-container />
+
+  @let isEnLang = ("lang" |translate) === "en";
   <a
     backBtn
     class="flex justify-center items-center cursor-pointer"
     (click)="onNavigate(activeStepIndex() - 1)"
   >
-    @if(activeStepIndex()>0 && activeStepIndex()<6){
-    <mat-icon class="md:text-lg text-base font-normal">east</mat-icon>
+    @if(activeStepIndex()>0 && activeStepIndex()<6){ @let icon = isEnLang
+    ?"west" : "east";
+
+    <mat-icon class="md:text-lg text-base font-normal">{{ icon }}</mat-icon>
     <span class="border-0 md:text-base text-sm font-normal text-secondary">{{
       "utils.back" | translate
     }}</span>

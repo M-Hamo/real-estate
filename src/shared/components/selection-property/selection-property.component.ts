@@ -50,7 +50,7 @@ import { IProperty } from 'src/utils';
           class="h-[59px] w-[59px] rounded-[8px] bg-cover"
         />
 
-        <span class="text-darkGray text-lg font-normal">
+        <span class="text-darkGray text-center text-base font-normal ">
           {{ property().name | translate }}
         </span>
       </div>
