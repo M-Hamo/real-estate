@@ -10,7 +10,7 @@ export class LanguageService {
     private readonly _translate: TranslateService,
     private readonly _bidirectionallyService: BidirectionallyService
   ) {
-    this.lang() ?? localStorage.setItem('lang', 'en');
+    this.lang() ?? localStorage.setItem('lang', 'ar');
     this.setLanguage(JSON.parse(JSON.stringify(localStorage.getItem('lang'))));
   }
 
