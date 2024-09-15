@@ -6,11 +6,13 @@
     [@animate]="{ value: '*', params: { y: '20px', delay: '50ms' } }"
     class="flex flex-col justify-center items-center gap-2"
   >
-    <strong class="sm:text-2xl text-xl font-extrabold text-darkGray">
+    <strong
+      class="sm:text-2xl text-xl text-center font-extrabold text-darkGray"
+    >
       {{ "submit_step.sending_msg" | translate }}
     </strong>
 
-    <p class="text-base font-medium text-secondary">
+    <p class="text-base font-medium text-center text-secondary">
       {{ "submit_step.wait_some_minutes" | translate }}
     </p>
   </section>
