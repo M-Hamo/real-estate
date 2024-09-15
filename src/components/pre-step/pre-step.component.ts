@@ -3,13 +3,12 @@ import {
   Component,
   forwardRef,
   inject,
+  OnInit,
   output,
   OutputEmitterRef,
 } from '@angular/core';
 import {
-  ControlValueAccessor,
   FormBuilder,
-  FormGroup,
   FormsModule,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
@@ -17,8 +16,12 @@ import {
 } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { Animations, SubmitBtnComponent } from '@shared';
-import { CreationType, PreStepFormGroup } from 'src/utils';
+import {
+  Animations,
+  BaseFormValueAccessorComponent,
+  SubmitBtnComponent,
+} from '@shared';
+import { CreationType } from 'src/utils';
 
 const Components: Array<any> = [SubmitBtnComponent];
 
@@ -44,34 +47,20 @@ const Components: Array<any> = [SubmitBtnComponent];
   ],
   animations: [Animations],
 })
-export class PreStepComponent implements ControlValueAccessor {
+export class PreStepComponent
+  extends BaseFormValueAccessorComponent
+  implements OnInit
+{
   readonly #fb = inject(FormBuilder);
 
   public onNext: OutputEmitterRef<void> = output();
 
-  public readonly preStepFormGroup: FormGroup<PreStepFormGroup> =
-    this.#fb.nonNullable.group({
+  public readonly CreationType = CreationType;
+
+  public ngOnInit(): void {
+    this.formGroup = this.#fb.nonNullable.group({
       createType: ['', Validators.required],
       projectName: ['', Validators.required],
     });
-
-  public readonly CreationType = CreationType;
-
-  public get disableInputs(): boolean {
-    return !this.preStepFormGroup.get('enabled')?.value;
   }
-
-  public writeValue = (value: any): void => {
-    this.preStepFormGroup.setValue(value);
-  };
-
-  public registerOnChange = (fn: Function): void => {
-    this.preStepFormGroup.valueChanges?.subscribe((val) => fn(val));
-  };
-
-  public registerOnTouched = (fn: Function): void => {
-    this.preStepFormGroup.valueChanges.subscribe((val) => fn(val));
-  };
-
-  private _resetForm = (): void => this.preStepFormGroup.reset({});
 }

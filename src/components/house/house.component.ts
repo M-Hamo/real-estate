@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import {
   Component,
   computed,
+  DestroyRef,
   effect,
   inject,
   Signal,
@@ -27,6 +28,7 @@ import { PropPreviewComponent } from '../prop-preview/prop-preview.component';
 import { PropComponent } from '../prop/prop.component';
 import { SubmitComponent } from '../submit/submit.component';
 import { VerificationComponent } from '../verification/verification.component';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 const Components: Array<any> = [
   SelectionComponent,
@@ -57,9 +59,10 @@ const Components: Array<any> = [
 })
 export class HouseComponent {
   readonly #fb = inject(FormBuilder);
+  readonly #destroyRef = inject(DestroyRef);
   readonly #dialogRef = inject(MatDialogRef<HouseComponent>);
 
-  readonly #stepsIndexes: WritableSignal<number[]> = signal([6]);
+  readonly #stepsIndexes: WritableSignal<number[]> = signal([0]);
 
   public readonly activeStepIndex: Signal<number> = computed(
     () => this.#stepsIndexes().at(-1)!
@@ -81,7 +84,9 @@ export class HouseComponent {
     });
 
   public ngOnInit(): void {
-    this.houseFormGroup?.valueChanges.pipe(tap(console.log)).subscribe();
+    this.houseFormGroup?.valueChanges
+      .pipe(tap(console.log), takeUntilDestroyed(this.#destroyRef))
+      .subscribe();
   }
 
   public onNavigate = (stepIndex: number): void => {

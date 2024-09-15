@@ -5,13 +5,12 @@ import {
   inject,
   input,
   InputSignal,
+  OnInit,
   output,
   OutputEmitterRef,
 } from '@angular/core';
 import {
-  ControlValueAccessor,
   FormBuilder,
-  FormControl,
   FormsModule,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
@@ -19,7 +18,12 @@ import {
 } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { Animations, SafeHtmlPipe, SubmitBtnComponent } from '@shared';
+import {
+  Animations,
+  BaseFormValueAccessorComponent,
+  SafeHtmlPipe,
+  SubmitBtnComponent,
+} from '@shared';
 import {
   PropertyDesignType,
   PropertyDetailsFormGroup as PropertyDetailsGroup,
@@ -51,7 +55,10 @@ const Pipes: Array<any> = [SafeHtmlPipe];
     },
   ],
 })
-export class PropPreviewComponent implements ControlValueAccessor {
+export class PropPreviewComponent
+  extends BaseFormValueAccessorComponent
+  implements OnInit
+{
   readonly #fb = inject(FormBuilder);
 
   public readonly propDetails: InputSignal<PropertyDetailsGroup | undefined> =
@@ -59,26 +66,9 @@ export class PropPreviewComponent implements ControlValueAccessor {
 
   public onNext: OutputEmitterRef<void> = output();
 
-  public readonly propertyDesignControl: FormControl<string> =
-    this.#fb.nonNullable.control('', [Validators.required]);
-
   public readonly PropertyDesignType = PropertyDesignType;
 
-  public get disableInputs(): boolean {
-    return !this.propertyDesignControl.get('enabled')?.value;
+  public ngOnInit(): void {
+    this.formGroup = this.#fb.nonNullable.control('', [Validators.required]);
   }
-
-  public writeValue = (val: any): void => {
-    val && this.propertyDesignControl.setValue(val, { emitEvent: true });
-  };
-
-  public registerOnChange = (fn: Function): void => {
-    this.propertyDesignControl.valueChanges?.subscribe((val) => fn(val));
-  };
-
-  public registerOnTouched = (fn: Function): void => {
-    this.propertyDesignControl.valueChanges.subscribe((val) => fn(val));
-  };
-
-  private _resetForm = (): void => this.propertyDesignControl.reset();
 }

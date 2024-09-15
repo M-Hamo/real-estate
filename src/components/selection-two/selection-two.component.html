@@ -12,8 +12,8 @@
     <selection-property
       [@animate]="{ value: '*', params: { y: '-20px', delay: '50ms' } }"
       [property]="property"
-      [isSelected]="property.name === propertyTypeControl.value"
-      [formControl]="propertyTypeControl"
+      [isSelected]="property.name === formGroup.value"
+      [formControl]="$any(formGroup)"
     />
     }
   </section>
@@ -23,7 +23,7 @@
     class="flex flex-col justify-center items-center md:mt-16 mt-8"
   >
     <submit-btn
-      [disabled]="propertyTypeControl.invalid"
+      [disabled]="formGroup.invalid"
       text="utils.next"
       class="h-[34.83px] w-[164.35px] md:mb-6 mb-3"
       (click)="onNext.emit()"

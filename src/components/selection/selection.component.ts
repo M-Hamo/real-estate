@@ -3,6 +3,7 @@ import {
   Component,
   forwardRef,
   inject,
+  OnInit,
   output,
   OutputEmitterRef,
   signal,
@@ -11,6 +12,7 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import {
   Animations,
+  BaseFormValueAccessorComponent,
   SelectionPropertyComponent,
   StarTitle,
   StarTitleComponent,
@@ -18,9 +20,7 @@ import {
 } from '@shared';
 import { IProperty } from 'src/utils';
 import {
-  ControlValueAccessor,
   FormBuilder,
-  FormControl,
   FormsModule,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
@@ -56,7 +56,10 @@ const Components: Array<any> = [
     },
   ],
 })
-export class SelectionComponent implements ControlValueAccessor {
+export class SelectionComponent
+  extends BaseFormValueAccessorComponent
+  implements OnInit
+{
   readonly #fb = inject(FormBuilder);
 
   public onNext: OutputEmitterRef<void> = output();
@@ -81,24 +84,7 @@ export class SelectionComponent implements ControlValueAccessor {
     description: 'selection_step.description',
   });
 
-  public readonly propertyPlaceControl: FormControl<string> =
-    this.#fb.nonNullable.control('', [Validators.required]);
-
-  public get disableInputs(): boolean {
-    return !this.propertyPlaceControl.get('enabled')?.value;
+  public ngOnInit(): void {
+    this.formGroup = this.#fb.nonNullable.control('', [Validators.required]);
   }
-
-  public writeValue = (val: any): void => {
-    val && this.propertyPlaceControl.setValue(val, { emitEvent: true });
-  };
-
-  public registerOnChange = (fn: Function): void => {
-    this.propertyPlaceControl.valueChanges?.subscribe((val) => fn(val));
-  };
-
-  public registerOnTouched = (fn: Function): void => {
-    this.propertyPlaceControl.valueChanges.subscribe((val) => fn(val));
-  };
-
-  private _resetForm = (): void => this.propertyPlaceControl.reset();
 }

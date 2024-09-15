@@ -45,7 +45,7 @@
   </div>
 
   <div
-    [formGroup]="preStepFormGroup"
+    [formGroup]="$any(formGroup)"
     class="h-full flex flex-col justify-start items-start gap-1 sm:pe-4 px-4 sm:pt-12"
   >
     <strong class="lg:text-2xl text-base font-extrabold text-primary">
@@ -56,8 +56,7 @@
       {{ "pre_step.chosen_method_creating_campaign" | translate }}
     </p>
 
-    @let isManual = preStepFormGroup.get('createType')?.value ===
-    CreationType.MANUAL;
+    @let isManual = formGroup.get('createType')?.value === CreationType.MANUAL;
 
     <label
       [@animate]="{ value: '*', params: { x: '20px', delay: '50ms' } }"
@@ -92,14 +91,14 @@
       </p>
     </label>
 
-    @let isAi = preStepFormGroup.get('createType')?.value === CreationType.AI;
+    @let isAi = formGroup.get('createType')?.value === CreationType.AI;
 
     <label
       [@animate]="{ value: '*', params: { x: '20px', delay: '50ms' } }"
       [ngClass]="{ 'border-lightBlue': isAi }"
       for="ai_creation"
       class="w-full flex flex-col justify-start items-stretch gap-1 md:p-3 p-2 mt-3 md:pb-4 shadow hover:shadow-lg cursor-pointer ease-in-out duration-200 rounded-lg border-[1px] border-[#F0F0F0]"
-      (click)="preStepFormGroup.get('projectName')?.reset()"
+      (click)="formGroup.get('projectName')?.reset()"
     >
       <div class="flex justify-between items-start">
         <img src="assets/icons/Group 1000017646.svg" alt="" class="h-11 w-11" />
@@ -159,7 +158,7 @@
     <div class="flex-1 self-end flex items-end pb-6">
       <submit-btn
         [@animate]="{ value: '*', params: { y: '10px', delay: '50ms' } }"
-        [disabled]="preStepFormGroup.invalid"
+        [disabled]="formGroup.invalid"
         text="pre_step.start_now"
         class="h-[34px] w-[192px] md:mb-6 mb-3"
         (click)="onNext.emit()"

@@ -3,13 +3,12 @@ import {
   Component,
   forwardRef,
   inject,
+  OnInit,
   output,
   OutputEmitterRef,
 } from '@angular/core';
 import {
-  ControlValueAccessor,
   FormBuilder,
-  FormGroup,
   FormsModule,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
@@ -18,7 +17,11 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { TranslateModule } from '@ngx-translate/core';
-import { Animations, SubmitBtnComponent } from '@shared';
+import {
+  Animations,
+  BaseFormValueAccessorComponent,
+  SubmitBtnComponent,
+} from '@shared';
 import { AngularEditorConf } from 'src/utils';
 
 const Components: Array<any> = [SubmitBtnComponent, AngularEditorModule];
@@ -45,33 +48,20 @@ const Components: Array<any> = [SubmitBtnComponent, AngularEditorModule];
     },
   ],
 })
-export class PropComponent implements ControlValueAccessor {
+export class PropComponent
+  extends BaseFormValueAccessorComponent
+  implements OnInit
+{
   readonly #fb = inject(FormBuilder);
 
   public onNext: OutputEmitterRef<void> = output();
 
-  public readonly propFormGroup: FormGroup<any> = this.#fb.nonNullable.group({
-    description: ['', [Validators.required]],
-    detailedDescription: '',
-  });
-
   public readonly AngularEditorConf = AngularEditorConf;
 
-  public get disableInputs(): boolean {
-    return !this.propFormGroup.get('enabled')?.value;
+  public ngOnInit(): void {
+    this.formGroup = this.#fb.nonNullable.group({
+      description: ['', [Validators.required]],
+      detailedDescription: '',
+    });
   }
-
-  public writeValue = (val: any): void => {
-    val && this.propFormGroup.setValue(val, { emitEvent: true });
-  };
-
-  public registerOnChange = (fn: Function): void => {
-    this.propFormGroup.valueChanges?.subscribe((val) => fn(val));
-  };
-
-  public registerOnTouched = (fn: Function): void => {
-    this.propFormGroup.valueChanges.subscribe((val) => fn(val));
-  };
-
-  private _resetForm = (): void => this.propFormGroup.reset();
 }

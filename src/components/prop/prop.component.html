@@ -1,6 +1,6 @@
 <section
   [@animateStagger]="{ value: '100' }"
-  [formGroup]="propFormGroup"
+  [formGroup]="$any(formGroup)"
   class="gradient-bg w-full min-h-full flex flex-col justify-start sm:items-center items-stretch md:gap-2 gap-1 sm:pt-0 md:p-12 sm:p-8 p-4 pt-7"
 >
   <section
@@ -60,10 +60,7 @@
     [@animate]="{ value: '*', params: { y: '-20px', delay: '50ms' } }"
     class="self-stretch flex flex-col justify-start items-start gap-1 md:mt-2 mt-1"
   >
-    <label
-      for="long-description"
-      class="w-full text-lg font-normal text-secondary"
-    >
+    <label class="w-full text-lg font-normal text-secondary">
       {{ "prop_step.long_house_desc" | translate }}
     </label>
 
@@ -71,7 +68,6 @@
       [config]="AngularEditorConf"
       [placeholder]="'prop_step.long_house_desc' | translate"
       formControlName="detailedDescription"
-      id="long-description"
       class="w-full overflow-hidden"
     />
   </section>
@@ -81,7 +77,7 @@
     class="self-stretch flex flex-col justify-center items-center gap-2 md:mt-4 mt-2"
   >
     <submit-btn
-      [disabled]="propFormGroup.invalid"
+      [disabled]="formGroup.invalid"
       text="utils.next_step"
       class="h-[34.83px] w-[164.35px]"
       (click)="onNext.emit()"
