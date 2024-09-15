@@ -1,0 +1,132 @@
+<section
+  [@animateStagger]="{ value: '100' }"
+  class="gradient-bg w-full min-h-full flex flex-col justify-start items-stretch md:gap-3 gap-2 py-14 md:px-8 sm:px-6 px-4"
+>
+  <section class="flex justify-between items-center sm:pe-12">
+    <div class="flex flex-col justify-center items-start gap-1">
+      <strong class="sm:text-2xl text-xl font-extrabold text-darkGray">
+        {{ "pre_step.how_build_battles" | translate }}
+      </strong>
+
+      <p class="text-base font-medium text-secondary">
+        {{ "pre_step.chosen_method_creating_campaign" | translate }}
+      </p>
+    </div>
+
+    <img
+      src="assets/icons/Group 1000017697.svg"
+      alt=""
+      class="md:visible invisible -mb-20 sm:h-36 h-0 sm:w-36 w-0"
+    />
+  </section>
+
+  <section
+    class="rounded-xl shadow bg-slate-50 border border-[#D3D6DC66] p-3 text-lg font-medium md:mt-4 mt-2"
+  >
+    <div class="flex justify-start items-center gap-1 text-[#8A8EA1]">
+      <mat-icon style="height: 16px; width: 16px; font-size: 16px"
+        >calendar_month</mat-icon
+      >
+
+      <span class="text-inherit">{{
+        "prop_step.house_design" | translate
+      }}</span>
+    </div>
+
+    <div class="flex flex-wrap justify-start items-center md:gap-8 gap-4 mt-3">
+      @let isModern = propertyDesignControl.value ===PropertyDesignType.MODERN;
+      <label
+        for="modern_design"
+        class="flex justify-start items-center cursor-pointer ease-in-out duration-200"
+      >
+        <input
+          [checked]="isModern"
+          type="checkbox"
+          class="w-[12px] h-[12px] text-lightBlue bg-transparent border border-[#8E8E93] rounded-full focus:ring-0 ring-0"
+        />
+
+        <input
+          [value]="PropertyDesignType.MODERN"
+          [formControl]="propertyDesignControl"
+          id="modern_design"
+          type="radio"
+          class="invisible w-1"
+        />
+
+        <span class="text-darkGray md:text-lg text-base font-normal">
+          {{ "prop_step.modern_design" | translate }}
+        </span>
+      </label>
+
+      @let isAi = propertyDesignControl.value ===PropertyDesignType.AI;
+      <label
+        for="modern_design_ai"
+        class="flex justify-start items-center cursor-pointer ease-in-out duration-200"
+      >
+        <input
+          [checked]="isAi"
+          type="checkbox"
+          class="w-[12px] h-[12px] text-lightBlue bg-transparent border border-[#8E8E93] rounded-full focus:ring-0 ring-0"
+        />
+
+        <input
+          [value]="PropertyDesignType.AI"
+          [formControl]="propertyDesignControl"
+          id="modern_design_ai"
+          type="radio"
+          class="invisible w-1"
+        />
+
+        <span class="text-darkGray md:text-lg text-base font-normal">
+          {{ "prop_step.modern_design_ai" | translate }}
+        </span>
+      </label>
+    </div>
+  </section>
+
+  <section
+    class="rounded-xl shadow border border-[#D3D6DC66] text-lg font-medium"
+  >
+    <div class="rounded-t-xl p-3 bg-slate-50">
+      <div class="flex justify-start items-center gap-1 text-[#8A8EA1]">
+        <mat-icon style="height: 16px; width: 16px; font-size: 16px"
+          >visibility</mat-icon
+        >
+
+        <span class="text-inherit">{{
+          "prop_step.view_house_desc" | translate
+        }}</span>
+      </div>
+
+      <div class="flex justify-start items-center gap-2 mt-3">
+        <span class="text-inherit text-[#8A8EA1]"
+          >{{ "utils.subject" | translate }}:
+        </span>
+
+        <span class="text-inherit text-darkGray">{{
+          propDetails()?.description || "ــــــــــــ"
+        }}</span>
+      </div>
+    </div>
+
+    <div
+      [innerHTML]="propDetails()?.detailedDescription || '' | safeHtml"
+      class="md:h-52 overflow-auto p-3 bg-white rounded-b-xl"
+    ></div>
+  </section>
+
+  <section
+    class="self-stretch flex flex-col justify-center items-center gap-2 md:mt-4 mt-2"
+  >
+    <submit-btn
+      [disabled]="propertyDesignControl.invalid"
+      text="utils.next_step"
+      class="h-[34.83px] w-[164.35px]"
+      (click)="onNext.emit()"
+    />
+
+    <p class="text-darkGrayBlue md:text-base text-center text-sm font-medium">
+      {{ "prop_step.click_start_msg" | translate }}
+    </p>
+  </section>
+</section>

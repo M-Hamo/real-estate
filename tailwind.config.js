@@ -9,6 +9,7 @@ module.exports = {
         lightBlue: "#3E97FF",
         darkGray: "#2E2E2E",
         darkGrayish: "#464E5F",
+        disabled: "#B0BBD5",
       },
     },
   },

@@ -1,0 +1,88 @@
+<section
+  [@animateStagger]="{ value: '100' }"
+  [formGroup]="propFormGroup"
+  class="gradient-bg w-full min-h-full flex flex-col justify-start sm:items-center items-stretch md:gap-2 gap-1 sm:pt-0 md:p-12 sm:p-8 p-4 pt-7"
+>
+  <section class="w-full flex justify-between items-center sm:p-0 sm:pe-4 p-2">
+    <div class="sm:w-1/2 w-full">
+      <section
+        class="w-full inline-flex flex-col justify-center items-center gap-1"
+      >
+        <img
+          src="assets/icons/star-vector-yellow.svg"
+          alt=""
+          class="self-start sm:-ms-4 h-5 w-5"
+        />
+
+        <strong class="sm:text-2xl text-xl font-extrabold text-darkGray mt-2">
+          {{ "prop_step.desc_dream_house" | translate }}
+        </strong>
+
+        <img
+          src="assets/icons/star-vector-yellow.svg"
+          alt=""
+          class="self-end sm:-me-6 h-5 w-5"
+        />
+      </section>
+
+      <div
+        class="w-full self-start flex flex-col justify-center items-start gap-1"
+      >
+        <label
+          for="short-description"
+          class="w-full text-lg font-normal text-secondary"
+        >
+          {{ "prop_step.short_house_desc" | translate }}
+        </label>
+
+        <input
+          [placeholder]="'utils.description' | translate"
+          formControlName="description"
+          id="short-description"
+          class="w-full h-[34px] bg-transparent shadow border-[#D3D6DC] text-gray-900 text-lg font-normal rounded-lg focus:ring-0 focus:border-lightBlue placeholder:text-[#B7B7B7] placeholder:text-base py-2.5 px-3"
+          type="text"
+        />
+      </div>
+    </div>
+
+    <img
+      src="assets/icons/Group 1000017697.svg"
+      alt=""
+      class="md:visible invisible -mb-40 md:h-36 h-0 md:w-36 w-0"
+    />
+  </section>
+
+  <section
+    class="self-stretch flex flex-col justify-start items-start gap-1 md:mt-2 mt-1"
+  >
+    <label
+      for="long-description"
+      class="w-full text-lg font-normal text-secondary"
+    >
+      {{ "prop_step.long_house_desc" | translate }}
+    </label>
+
+    <angular-editor
+      [config]="AngularEditorConf"
+      [placeholder]="'prop_step.long_house_desc' | translate"
+      formControlName="detailedDescription"
+      id="long-description"
+      class="w-full overflow-hidden"
+    />
+  </section>
+
+  <section
+    class="self-stretch flex flex-col justify-center items-center gap-2 md:mt-4 mt-2"
+  >
+    <submit-btn
+      [disabled]="propFormGroup.invalid"
+      text="utils.next_step"
+      class="h-[34.83px] w-[164.35px]"
+      (click)="onNext.emit()"
+    />
+
+    <p class="text-darkGrayBlue md:text-base text-center text-sm font-medium">
+      {{ "prop_step.click_start_msg" | translate }}
+    </p>
+  </section>
+</section>

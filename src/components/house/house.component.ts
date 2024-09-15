@@ -23,11 +23,15 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { SelectionComponent } from '../selection/selection.component';
 import { SelectionTwoComponent } from '../selection-two/selection-two.component';
+import { PropPreviewComponent } from '../prop-preview/prop-preview.component';
+import { PropComponent } from '../prop/prop.component';
 
 const Components: Array<any> = [
   SelectionComponent,
   SelectionTwoComponent,
   PreStepComponent,
+  PropComponent,
+  PropPreviewComponent,
 ];
 
 @Component({
@@ -51,7 +55,7 @@ export class HouseComponent {
   readonly #fb = inject(FormBuilder);
   readonly #dialogRef = inject(MatDialogRef<HouseComponent>);
 
-  readonly #stepsIndexes: WritableSignal<number[]> = signal([1]);
+  readonly #stepsIndexes: WritableSignal<number[]> = signal([4]);
 
   public readonly activeStepIndex: Signal<number> = computed(
     () => this.#stepsIndexes().at(-1)!
@@ -68,6 +72,8 @@ export class HouseComponent {
       preStepFromGroup: { createType: '', projectName: '' },
       propertyPlace: '',
       propertyType: '',
+      propertyDetailsForm: { description: '', detailedDescription: '' },
+      propertyDetailsType: '',
     });
 
   public ngOnInit(): void {

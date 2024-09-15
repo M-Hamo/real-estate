@@ -25,22 +25,37 @@
   <pre-step
     [@animate]="{ value: '*', params: { x: animationDir, delay: '100ms' } }"
     formControlName="preStepFromGroup"
-    class="h-full w-full flex justify-center items-center"
+    class="h-full w-full flex"
     (onNext)="onNavigate(1)"
   />
   } @case (1) {
   <selection
     [@animate]="{ value: '*', params: { x: animationDir, delay: '100ms' } }"
     formControlName="propertyPlace"
-    class="h-full w-full flex justify-center items-center"
+    class="h-full w-full flex"
     (onNext)="onNavigate(2)"
   />
   } @case (2) {
   <selection-two
     [@animate]="{ value: '*', params: { x: animationDir, delay: '100ms' } }"
     formControlName="propertyType"
-    class="h-full w-full flex justify-center items-center"
+    class="h-full w-full flex"
     (onNext)="onNavigate(3)"
+  />
+  } @case (3) {
+  <prop
+    [@animate]="{ value: '*', params: { x: animationDir, delay: '100ms' } }"
+    formControlName="propertyDetailsForm"
+    class="h-full w-full flex"
+    (onNext)="onNavigate(4)"
+  />
+  } @case (4) {
+  <prop-preview
+    [@animate]="{ value: '*', params: { x: animationDir, delay: '100ms' } }"
+    [propDetails]="houseFormGroup.get('propertyDetailsForm')?.value"
+    formControlName="propertyDetailsType"
+    class="h-full w-full flex"
+    (onNext)="onNavigate(5)"
   />
   } }
 </app-dialog>

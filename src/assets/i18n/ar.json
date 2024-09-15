@@ -32,8 +32,21 @@
     "property2": "شقة دوبليكس",
     "property3": "شقة سكنية"
   },
+  "prop_step": {
+    "desc_dream_house": "قم بكتابة وصف منزل أحلامك",
+    "short_house_desc": "وصف مختصر عن المنزل",
+    "long_house_desc": "وصف تعبيري عن المنزل",
+    "click_start_msg": "قم بالضغط على زر ''بدء'' للبدء في العملية، لادخال معلومات المنزل",
+    "house_design": "تصميم المنزل",
+    "modern_design": "تصميم حديث",
+    "modern_design_ai": "تصميم حديث وذكي",
+    "view_house_desc": "معاينة وصف المنزل"
+  },
   "utils": {
     "back": "العودة",
-    "next": "التالي"
+    "next": "التالي",
+    "next_step": "الخطوة التالية",
+    "description": "الوصف",
+    "subject": "الموضوع"
   }
 }

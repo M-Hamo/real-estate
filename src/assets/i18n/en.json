@@ -1,9 +1,39 @@
 {
   "lang": "en",
   "pre_step": {
-    "preparing_advertising_campaigns": "Preparing advertising campaigns",
-    "hello_msg": "Welcome to the platform for choosing residential properties for development",
-    "hello_desc": "Add your current customers to your new system to begin the experiment''Add your current clients to your new system to begin the experiment''",
-    "step1": "Upload your logo and brand details"
+    "preparing_advertising_campaigns": "Preparing Advertising Campaigns",
+    "hello_msg": "Welcome to the Residential Real Estate Selection Platform",
+    "hello_desc": "Add your existing clients to your new system to start the experience",
+    "step1": "Upload your logo and brand details",
+    "step2": "Select and customize the fields you need",
+    "step3": "Choose a theme and design your form's appearance",
+    "step4": "Set up a thank you message and follow-up actions",
+    "how_build_battles": "How to build your campaign",
+    "chosen_method_creating_campaign": "Chosen method for creating the campaign message",
+    "manual_creation": "Manual Creation",
+    "manual_creation_desc": "Manually and carefully create your housing request message. Choose your words carefully,",
+    "ai_creation": "AI Creation",
+    "ai_creation_desc": "Create your housing request message manually and carefully. Choose your words carefully,",
+    "name_project_choice": "Name your Selection Project",
+    "name_should_project_distinct_clear": "Your project name should be distinct and clear",
+    "name_proposed_project": "Proposed Project Name",
+    "start_now": "Start Now"
+  },
+  "selection_step": {
+    "title": "Choose your preferred housing location",
+    "selection_two_title": "Choose the type of house",
+    "description": "Choose your housing source to complete the remaining steps",
+    "cairo": "Cairo",
+    "north_coast": "North Coast",
+    "dhb": "Dahab",
+    "help_msg": "We are here to help you select your home easily and carefully",
+    "click_start_msg": "Click the 'Start' button to begin the process, and follow the instructions to enter the campaign information",
+    "property1": "Villa",
+    "property2": "Duplex Apartment",
+    "property3": "Residential Apartment"
+  },
+  "utils": {
+    "back": "Back",
+    "next": "Next"
   }
 }
