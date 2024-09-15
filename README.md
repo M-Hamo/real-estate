@@ -25,6 +25,8 @@ Project is created with:
 - SCSS
 - Tailwind CSS
 
+## Live app [https://m-hamo.github.io/real-estate](https://m-hamo.github.io/real-estate/)
+
 ## Clone app
 
 git clone `https://github.com/M-Hamo/real-estate.git`
