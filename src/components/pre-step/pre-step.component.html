@@ -98,7 +98,7 @@
       [ngClass]="{ 'border-lightBlue': isAi }"
       for="ai_creation"
       class="w-full flex flex-col justify-start items-stretch gap-1 md:p-3 p-2 mt-3 md:pb-4 shadow hover:shadow-lg cursor-pointer ease-in-out duration-200 rounded-lg border-[1px] border-[#F0F0F0]"
-      (click)="formGroup.get('projectName')?.reset()"
+      (click)="formGroup.get('projectName')?.patchValue('Generated ai name')"
     >
       <div class="flex justify-between items-start">
         <img src="assets/icons/Group 1000017646.svg" alt="" class="h-11 w-11" />
